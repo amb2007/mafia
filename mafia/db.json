@@ -1,0 +1,10 @@
+{
+    "caracters": [
+      { "id": 1, "asesino": "asesino", "nombre":"" },
+      { "id": 2, "policia": "policia", "nombre":"" },
+      { "id": 3, "medico": "medico", "nombre":""},
+      { "id": 4, "ciudadano": "ciudadano", "nombre":"" },
+      { "id": 5, "ciudadano": "ciudadano", "nombre":"" },
+      { "id": 6, "ciudadano": "ciudadano", "nombre":"" }
+    ]
+  }
