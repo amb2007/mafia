@@ -1,0 +1,53 @@
+/* Contenedor general */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  /* Estilo sombrío para el título */
+  .mafia-title {
+    font-family: 'Butcherman'; /* Fuente con aspecto gótico o tétrico */
+    font-size: 5rem;
+    color: #ff0000;
+    text-shadow: 0 0 10px #000, 0 0 20px #a50505b6, 0 0 30px #af0606b9, 0 0 40px #ff0000;
+    opacity: 1; /* Asegura que la opacidad se mantenga en 1 */
+    animation: fade-in 3s ease-in-out forwards; /* Añadimos 'forwards' para mantener el estado final */
+  }
+  
+  /* Animación de aparición */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  /* Estilo para los botones */
+  .options {
+    margin-top: 2rem;
+  }
+  
+  .options-container button {
+    margin: 0 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .options button:hover {
+    background-color: #b60606;
+    color: black;
+  }
+  

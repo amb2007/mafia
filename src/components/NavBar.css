@@ -1,0 +1,29 @@
+.nav { /* Fija la barra de navegación */
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(172, 163, 163, 0.733); /* Color de fondo para la nav */
+}
+
+.nav button{
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.nav .logo {
+  height: 6rem; /* Ajusta la altura según tu diseño */
+  margin-right: 1rem; /* Espacio entre logo y nav */
+}
+.nav a {
+    text-decoration: none; /* Sin subrayado */
+    color: inherit; /* Hereda el color del botón */
+  }
+  
+  /* Cambios de color en el hover del botón */
+  .nav button:hover {
+    background-color: #830a0a; /* Color de fondo en hover */
+    color: black; /* Cambia el color del texto a negro en hover */
+  }
