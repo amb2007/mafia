@@ -1,10 +1,10 @@
 {
     "caracters": [
-      { "id": 1, "asesino": "asesino", "nombre":"" },
-      { "id": 2, "policia": "policia", "nombre":"" },
-      { "id": 3, "medico": "medico", "nombre":""},
-      { "id": 4, "ciudadano": "ciudadano", "nombre":"" },
-      { "id": 5, "ciudadano": "ciudadano", "nombre":"" },
-      { "id": 6, "ciudadano": "ciudadano", "nombre":"" }
+      { "id": 1, "rol": "asesino", "nombre":"" },
+      { "id": 2, "rol": "policia", "nombre":"" },
+      { "id": 3, "rol": "medico", "nombre":""},
+      { "id": 4, "rol": "ciudadano", "nombre":"" },
+      { "id": 5, "rol": "ciudadano", "nombre":"" },
+      { "id": 6, "rol": "ciudadano", "nombre":"" }
     ]
   }
