@@ -1,96 +1,51 @@
 import { useState } from "react";
-const Form = ({caracters}) => {
-    const [formData, setFormData] = useState({
-        nombre1: "",
-        nombre2: "",
-        nombre3: "",
-        nombre4: "",
-        nombre5: "",
-        nombre6: "",
-    });
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+import { toast } from "react-toastify";
+function Form({ players, setPlayers, savePlayers }) {
+    const handleChange = (event, id) => {
+        const { value } = event.target;
+
+        const updatedPlayers = players.map((player) =>
+            player.id === id ? { ...player, name: value } : player
+        );
+
+        setPlayers(updatedPlayers);
     };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        window.alert("Formulario enviado");
-    };
-    console.log(formData);
+    const validationName = (name) => {
+        if (name.trim() === ""){
+          return "El nombre no puede estar vacio"
+        } else if (!/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/.test(name)){
+          return "El nombre solo puede contener letras válidas"
+        } else if(name.length < 3){
+          return "El nombre debe tener al menos 3 caracteres"
+        }
+      }
+    
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        const validName=validationName(players.name)
+    }
     return (
         <>
             <div className="App-header">
-                <h2>Formulario de Registro</h2>
-                <p>{caracters.asesino}</p>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 1:</label>
-                        <input
-                            type="text"
-                            id="nombre1"
-                            name="nombre1"
-                            value={formData.nombre1}
-                            onChange={handleChange}
-                        />
+                <h2>Ingreso de Jugadores</h2>
+                {players.map((player) => (
+                    <div key={player.id}>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor={`nombre${player.id}`}>Nombre del usuario {player.id}:</label>
+                            <input
+                                type="text"
+                                id={`nombre${player.id}`}
+                                name={`nombre${player.id}`}
+                                value={player.name}
+                                onChange={(e) => handleChange(e, player.id)}
+                            />
+                        </form >
                     </div>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 2:</label>
-                        <input
-                            type="text"
-                            id="nombre2"
-                            name="nombre2"
-                            value={formData.nombre2}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 3:</label>
-                        <input
-                            type="text"
-                            id="nombre3"
-                            name="nombre3"
-                            value={formData.nombre3}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 4:</label>
-                        <input
-                            type="text"
-                            id="nombre4"
-                            name="nombre4"
-                            value={formData.nombre4}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 5:</label>
-                        <input
-                            type="text"
-                            id="nombre5"
-                            name="nombre5"
-                            value={formData.nombre5}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="nombre">Nombre del usuario 6:</label>
-                        <input
-                            type="text"
-                            id="nombre6"
-                            name="nombre6"
-                            value={formData.nombre6}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <button type="submit">Enviar</button>
-                </form>
+                ))}
+                <button onClick={handleSubmit}>Guardar Jugadores</button>
             </div>
         </>
-    )
-}
+    );
+};
+
 export default Form;

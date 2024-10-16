@@ -4,6 +4,8 @@ import Home from './components/Home';
 import Game from  './components/Game';
 import Intro from './components/Intro';
 import NavBar from './components/NavBar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
@@ -24,6 +26,7 @@ function App() {
           </>} />
         </Routes>
     </Router>
+    <ToastContainer></ToastContainer>
     </>
   )
 }
