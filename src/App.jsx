@@ -4,31 +4,34 @@ import Home from './components/Home';
 import Game from  './components/Game';
 import Intro from './components/Intro';
 import NavBar from './components/NavBar';
+import Gameplay from './components/Gameplay';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 function App() {
+  const [players, setPlayers] = useState([
+    { id: 1, name: "", role: "" },
+    { id: 2, name: "", role: "" },
+    { id: 3, name: "", role: "" },
+    { id: 4, name: "", role: "" },
+    { id: 5, name: "", role: "" },
+    { id: 6, name: "", role: "" },
+  ]);
+
   return (
     <>
-    <Router>
+      <Router>
         <Routes>
           <Route path="/" element={<Intro />} />
-          <Route path="/home" element={
-          <>
-          <NavBar />
-          <Home />
-
-          </>} />
-          <Route path="/game" element={
-          <>
-          <NavBar />
-          <Game />
-
-          </>} />
+          <Route path="/home" element={<><NavBar /><Home /></>} />
+          <Route path="/game" element={<><NavBar /><Game players={players} setPlayers={setPlayers} /></>} />
+          <Route path="/gameplay" element={<><NavBar /><Gameplay players={players}></Gameplay></>} /> {/* Se pasa players */}
         </Routes>
-    </Router>
-    <ToastContainer></ToastContainer>
+      </Router>
+      <ToastContainer />
     </>
-  )
+  );
+
 }
 
 export default App

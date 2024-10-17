@@ -2,32 +2,32 @@
   "caracters": [
     {
       "id": "1",
-      "name": "jiurepojrsddfskljf",
+      "name": "ghhfghfhgjjkjh",
       "role": "asesino"
     },
     {
       "id": "2",
-      "name": "dasdsa",
-      "role": "ciudadano"
-    },
-    {
-      "id": "3",
-      "name": "",
+      "name": "tyfgfgh",
       "role": "policia"
     },
     {
-      "id": "4",
-      "name": "dasdsa",
-      "role": "medico"
-    },
-    {
-      "id": "5",
-      "name": "dasdas",
+      "id": "3",
+      "name": "fdfgd",
       "role": "ciudadano"
     },
     {
+      "id": "4",
+      "name": "dfsdf",
+      "role": "ciudadano"
+    },
+    {
+      "id": "5",
+      "name": "dfsfd",
+      "role": "medico"
+    },
+    {
       "id": "6",
-      "name": "dasdsa",
+      "name": "dfsdf",
       "role": "ciudadano"
     }
   ]

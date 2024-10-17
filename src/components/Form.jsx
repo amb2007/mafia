@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-function Form({ players, setPlayers, savePlayers }) {
+import './NavBar.css'
+function Form({ players, setPlayers, savePlayers, assignRoles }) {
     const handleChange = (event, id) => {
         const { value } = event.target;
 
@@ -22,14 +23,27 @@ function Form({ players, setPlayers, savePlayers }) {
     
     const handleSubmit = (e) =>{
         e.preventDefault()
-        const validName=validationName(players.name)
-    }
+        let valid = true;
+
+       
+        players.forEach(player => {
+            const errorMessage = validationName(player.name);
+            if (errorMessage) {
+                valid = false;
+                toast.error(errorMessage); 
+            }
+        });
+
+        if (valid) {
+            savePlayers();
+        }
+    };
     return (
         <>
             <div className="App-header">
-                <h2>Ingreso de Jugadores</h2>
+                <h2 className="encabezado-form">Ingreso de Jugadores</h2>
                 {players.map((player) => (
-                    <div key={player.id}>
+                    <main key={player.id}>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor={`nombre${player.id}`}>Nombre del usuario {player.id}:</label>
                             <input
@@ -40,9 +54,12 @@ function Form({ players, setPlayers, savePlayers }) {
                                 onChange={(e) => handleChange(e, player.id)}
                             />
                         </form >
-                    </div>
+                    </main>
                 ))}
+                <div role="group">
                 <button onClick={handleSubmit}>Guardar Jugadores</button>
+                <button onClick={assignRoles}>Asignar Roles</button>
+                </div>
             </div>
         </>
     );

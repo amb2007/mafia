@@ -22,7 +22,7 @@
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.2);
     }
     100% {
       opacity: 1;
@@ -36,7 +36,7 @@
   }
   
   .options-container button {
-    margin: 0 1rem;
+    margin: 2rem 1rem;
     padding: 1rem 2rem;
     font-size: 1.2rem;
     background-color: transparent;

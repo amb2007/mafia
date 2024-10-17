@@ -1,23 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
 import Form from "./Form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Gameplay from "./Gameplay";
 
-function Game() {
+function Game({ setPlayers, players }) {
+  const navigate = useNavigate();
   const db = "http://localhost:3000/caracters";
   const roles = ["asesino", "policia", "medico", "ciudadano", "ciudadano", "ciudadano"];
-  
-  const [players, setPlayers] = useState([
-    { id: 1, name: "", role: "pampas" },
-    { id: 2, name: "", role: "" },
-    { id: 3, name: "", role: "" },
-    { id: 4, name: "", role: "" },
-    { id: 5, name: "", role: "" },
-    { id: 6, name: "", role: "" },
-  ]);
 
   const assignRoles = () => {
-    // Mezclamos los roles para asignar de manera aleatoria
+    
     const shuffledRoles = roles.sort(() => Math.random() - 0.5);
 
     const updatedPlayers = players.map((player, index) => ({
@@ -25,23 +19,32 @@ function Game() {
       role: shuffledRoles[index], // Asignamos roles de manera aleatoria
     }));
 
+    // Actualizamos el estado de los jugadores con los roles asignados
     setPlayers(updatedPlayers);
+
+    return updatedPlayers; 
   };
 
   const savePlayers = () => {
-    // Hacemos un POST a la base de datos
-    players.forEach(player => {
+   
+    const updatedPlayers = assignRoles();
+
+    // Hacemos un PUT a la base de datos
+    updatedPlayers.forEach(player => {
       axios.put(`http://localhost:3000/caracters/${player.id}`, player)
         .then(response => console.log("Jugador guardado:", response.data))
         .catch(error => console.error("Error:", error));
     });
-    toast.success('Personas agregadas')
+
+    toast.success('Personas agregadas');
+    assignRoles()
+    navigate("/gameplay");
   };
 
   return (
     <>
-      <button onClick={assignRoles}>Asignar Roles</button>
-      <Form players={players} setPlayers={setPlayers} savePlayers ={savePlayers}></Form>
+      <Form players={players} setPlayers={setPlayers} savePlayers={savePlayers} assignRoles={assignRoles} />
+
     </>
   );
 }
