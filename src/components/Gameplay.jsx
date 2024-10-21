@@ -1,29 +1,20 @@
 import React from "react";
-
+import Cards from "./Cards";
+import { useState } from "react";
 const Gameplay = ({ players }) => {
-  const arr = [1, 2, 3, 4, 5, 6];
-    let index = 0;
-  const showPlayers = () => {
-    for (let index = 0; index < arr.length; index++) {
-      id = index;
-      <>Turno de {players[id].name}</>;
+  const [index, setIndex] = useState(0)
+  const handleClick = ()=>{
+    if(index < 7){
+      setIndex(index +1)
     }
-  };
+  }
   return (
     <div className="Gameplay-container">
-      <h3>Turno de los jugadores</h3>
-      <div className="cards"></div>
-      <div key={players[index].id} className="card">
-        <h4>{players[index].name}</h4>
-        <img
-          src={`images/${players[index].role}.png`}
-          width="200px"
-          alt={`Imagen de rol de ${players[index].name}`}
-        />
-        <p>Rol: {console.log(players[index].role)}</p>
-      </div>
+      <h3>Turno de {players[index].name}</h3>
+        <Cards players = {players} index = {index} />
+        <button onClick={handleClick}>Siguinte jugador </button>
     </div>
   );
 };
 
-export default Gameplay;
+export default Gameplay;  
