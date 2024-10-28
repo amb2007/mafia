@@ -1,6 +1,5 @@
 import { useState } from "react";
 const Cards = ({players, index}) => {
-
     return(
         <>
             <div className="cards"></div>

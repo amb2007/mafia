@@ -2,33 +2,33 @@
   "caracters": [
     {
       "id": "1",
-      "name": "fedex",
-      "role": "ciudadano"
+      "name": "dasdas",
+      "role": "asesino"
     },
     {
       "id": "2",
-      "name": "fish",
+      "name": "dsadas",
       "role": "policia"
     },
     {
       "id": "3",
-      "name": "cesar",
-      "role": "ciudadano"
-    },
-    {
-      "id": "4",
-      "name": "manchini",
-      "role": "ciudadano"
-    },
-    {
-      "id": "5",
-      "name": "pesi",
+      "name": "dsad",
       "role": "medico"
     },
     {
+      "id": "4",
+      "name": "panpi",
+      "role": "verdulero"
+    },
+    {
+      "id": "5",
+      "name": "asd",
+      "role": "carnicero"
+    },
+    {
       "id": "6",
-      "name": "gorra",
-      "role": "asesino"
+      "name": "das",
+      "role": "panadero"
     }
   ]
 }

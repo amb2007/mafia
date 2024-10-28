@@ -8,7 +8,7 @@ import Gameplay from "./Gameplay";
 function Game({ setPlayers, players }) {
   const navigate = useNavigate();
   const db = "http://localhost:3000/caracters";
-  const roles = ["asesino", "policia", "medico", "ciudadano", "ciudadano", "ciudadano"];
+  const roles = ["asesino", "policia", "medico", "verdulero", "carnicero", "panadero"];
 
   const assignRoles = () => {
     
