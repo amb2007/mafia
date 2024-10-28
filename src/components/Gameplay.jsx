@@ -35,9 +35,10 @@ const Gameplay = ({ players }) => {
           role={players[index].role}
           onConfirm={ConfirmAction}
           onClose={()=>setShowModal(false)}
+          handleClick={handleClick}
+          players={players}
           />
         )}
-        <button onClick={handleClick}>Siguinte jugador </button>
     </div>
   );
 };
