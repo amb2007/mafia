@@ -4,7 +4,7 @@ const Asesino = ({players}) => {
 
     const DeleteChar = () => {
         if(selectedPlayers){
-        axios.delete(`http://localhost:3000/caracters/${player.id}`)
+        axios.delete(`http://localhost:3000/caracters/${selectedPlayers}`)
         .then(response=>console.log(response))
         .catch(error=>console.log(error))
     }
