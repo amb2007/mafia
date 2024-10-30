@@ -1,29 +1,34 @@
 {
   "caracters": [
     {
-      "id": "2",
-      "name": "sdfg",
-      "role": "verdulero"
+      "name": "wqeqwu",
+      "role": "muerto",
+      "id": "1"
     },
     {
-      "id": "3",
-      "name": "calderon",
-      "role": "asesino"
+      "id": "2",
+      "name": "weirh",
+      "role": "carnicero"
+    },
+    {
+      "name": "rewuiwhrjkqwen",
+      "role": "muerto",
+      "id": "3"
     },
     {
       "id": "4",
-      "name": "dfsdf",
+      "name": "dfshkj",
       "role": "medico"
     },
     {
       "id": "5",
-      "name": "fakjhdksoifwe",
-      "role": "panadero"
+      "name": "mkjdsh",
+      "role": "asesino"
     },
     {
       "id": "6",
-      "name": "manchini",
-      "role": "carnicero"
+      "name": "sdifopw",
+      "role": "panadero"
     }
   ]
 }

@@ -1,4 +1,5 @@
-import Asesino from "./roles/Asesino"
+import Turn from "./turn"
+
 const Actions = ({ role, onConfirm, onClose, handleClick, players }) => {
     const getRoleAction = () => {
         switch (role) {
@@ -6,14 +7,14 @@ const Actions = ({ role, onConfirm, onClose, handleClick, players }) => {
                 return{
                     title:"Asesino - Accion: Matar",
                     description:"Eres un asesino asi que asesina",
-                    action:()=><Asesino players={players}/>,
+                    action:()=><Turn players={players}/>,
                 };
             case "medico":
-                const papaa =()=>{console.log("a")}
+                
                 return{
                     title:"Medico - Accion: Proteger",
                     description:"Eres un medico, protege a quien creas conveniente",
-                    action:papaa,
+                    action:()=><Turn players={players}/>,
                 };
             case "policia":
                 const papaaa =()=>{console.log("a")}
