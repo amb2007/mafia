@@ -1,24 +1,33 @@
-const Medico = ({players, setSaveDoc}) => {
+import { useState } from "react";
+import { toast } from "react-toastify";
+const Medico = ({ players, setSaveDoc }) => {
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-    const [selectedPlayers, setSelectedPlayers] = useState(null)
+    const handleSave = () => {
+        if (selectedPlayer) {
+            setSaveDoc(selectedPlayer.id); // Guarda el ID del jugador que se intenta salvar
+            toast.success(`Has salvado a ${selectedPlayer.name}`); // Mensaje de confirmación
+            setSelectedPlayer(null);
+        }
+    };
+
     return (
-        <>
+        <div>
             <h3>Selecciona a quien quieres salvar:</h3>
             <ul>
                 {players.map(player => (
                     <li key={player.id}>
-                        <button onClick={() => 
-                            {setSelectedPlayers(player)
-                             setSaveDoc(player.id)
-                            }}>
+                        <button onClick={() => setSelectedPlayer(player)}>
                             {player.name}
                         </button>
                     </li>
                 ))}
             </ul>
-            <button onClick={DeleteChar} disabled={!selectedPlayers}>Salvar</button>
-        </>
+            <button onClick={handleSave} disabled={!selectedPlayer}>
+                Salvar
+            </button>
+        </div>
     );
-    };
-    
-    export default Medico;
+};
+
+export default Medico;

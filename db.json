@@ -1,33 +1,33 @@
 {
   "caracters": [
     {
-      "name": "wqeqwu",
-      "role": "muerto",
-      "id": "1"
+      "id": "1",
+      "name": "sdasds",
+      "role": "policia"
     },
     {
       "id": "2",
-      "name": "weirh",
-      "role": "carnicero"
-    },
-    {
-      "name": "rewuiwhrjkqwen",
-      "role": "muerto",
-      "id": "3"
-    },
-    {
-      "id": "4",
-      "name": "dfshkj",
-      "role": "medico"
-    },
-    {
-      "id": "5",
-      "name": "mkjdsh",
+      "name": "sdasdasd",
       "role": "asesino"
     },
     {
+      "id": "3",
+      "name": "jodjaskldjqklj",
+      "role": "medico"
+    },
+    {
+      "id": "4",
+      "name": "djsakldjaskldj",
+      "role": "verdulero"
+    },
+    {
+      "id": "5",
+      "name": "djkasldjqskldjaskl",
+      "role": "carnicero"
+    },
+    {
       "id": "6",
-      "name": "sdifopw",
+      "name": "asdasd",
       "role": "panadero"
     }
   ]

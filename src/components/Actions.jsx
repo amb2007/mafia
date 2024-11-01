@@ -1,76 +1,111 @@
-import Turn from "./turn"
+import Turn from "./turn";
 
-const Actions = ({ role, onConfirm, onClose, handleClick, players }) => {
-    const getRoleAction = () => {
-        switch (role) {
-            case "asesino":
-                return{
-                    title:"Asesino - Accion: Matar",
-                    description:"Eres un asesino asi que asesina",
-                    action:()=><Turn players={players}/>,
-                };
-            case "medico":
-                
-                return{
-                    title:"Medico - Accion: Proteger",
-                    description:"Eres un medico, protege a quien creas conveniente",
-                    action:()=><Turn players={players}/>,
-                };
-            case "policia":
-                const papaaa =()=>{console.log("a")}
-                return{
-                    title:"Policia - Accion: Arrestar",
-                    description:"Eres un policia, arresta a quien creas que es el asesino",
-                    action:papaaa, 
-                };
-            case "verdulero":
-                
-                const papaaaa =()=>{console.log("a")}
-                return{
-                    title:"Verdulero - Accion: Normal",
-                    description:"Eres un verdulero, haz cosas normales de verdulero, como vender papa",
-                    action:papaaaa 
-                };
-                case "panadero":
-                    const papaaaaa = ()=>{console.log("a")}
-                    return{
-                        title:"Panadero - Accion: Normal",
-                        description:"Eres un panadero, haz cosas normales de panadero, como vender pan",
-                        action:papaaaaa 
-                    };
-                    default:
-                    case "carnicero":
-                        const papaaaaaa = ()=>{console.log("a")}
-                        
-                        return{
-                            title:"Carnicero - Accion: Normal",
-                            description:"Eres un carnicero, haz cosas normales de carnicero, como vender carne",
-                            action:papaaaaaa
-                        }
-        }
+const Actions = ({
+  role,
+  onConfirm,
+  onClose,
+  handleClick,
+  players,
+  currentPlayer,
+}) => {
+  const getRoleAction = () => {
+    switch (role) {
+      case "asesino":
+        return {
+          title: "Asesino - Acción: Matar",
+          description: "Eres un asesino, así que asesina a alguien.",
+          action: () => (
+            <Turn
+              player={currentPlayer}
+              players={players}
+              onActionComplete={handleClick}
+            />
+          ),
+        };
+      case "medico":
+        return {
+          title: "Médico - Acción: Proteger",
+          description: "Eres un médico, protege a quien creas conveniente.",
+          action: () => (
+            <Turn
+              player={currentPlayer}
+              players={players}
+              onActionComplete={handleClick}
+            />
+          ),
+        };
+      case "policia":
+        return {
+          title: "Policía - Acción: Arrestar",
+          description:
+            "Eres un policía, arresta a quien creas que es el asesino.",
+          action: () => {
+            console.log("Acción de Policía");
+          },
+        };
+      case "verdulero":
+        return {
+          title: "Verdulero - Acción: Normal",
+          description: "Eres un verdulero, haz cosas normales de verdulero.",
+          action: () => {
+            console.log("Acción de Verdulero");
+          },
+        };
+      case "panadero":
+        return {
+          title: "Panadero - Acción: Normal",
+          description: "Eres un panadero, haz cosas normales de panadero.",
+          action: () => {
+            console.log("Acción de Panadero");
+          },
+        };
+      case "carnicero":
+        return {
+          title: "Carnicero - Acción: Normal",
+          description: "Eres un carnicero, haz cosas normales de carnicero.",
+          action: () => {
+            console.log("Acción de Carnicero");
+          },
+        };
+      default:
+        return {
+          title: "Rol Desconocido",
+          description: "No tienes una acción definida.",
+          action: () => {
+            console.log("Acción Desconocida");
+          },
+        };
     }
+  };
 
-    const {title, description, action} = getRoleAction();
-    return (
-        <>
-            <dialog open>
-                <article>
-                    <h2>{title}</h2>
-                    <p>
-                        {description}
-                    </p>
-                    <footer>
-                        <button onClick={onClose} className="secondary">
-                            Cancelar
-                        </button>
-                        {role === "asesino" && action()}
-                        <button onClick={() => { action(); onConfirm(); handleClick() }}>
-                            Confirmar
-                        </button>
-                    </footer>
-                </article>
-            </dialog>
-        </>
-    )
-}
+  const { title, description, action } = getRoleAction();
+
+  return (
+    <>
+      <dialog open>
+        <article>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <footer>
+            <button onClick={onClose} className="secondary">
+              Cancelar
+            </button>
+            <button
+              onClick={() => {
+                action();
+                onConfirm();
+                handleClick();
+              }}
+            >
+              Confirmar
+            </button>
+          </footer>
+          {/* Aquí renderizamos la acción del rol si es necesario */}
+          {action && action()}
+        </article>
+      </dialog>
+    </>
+  );
+};
+
 export default Actions;
