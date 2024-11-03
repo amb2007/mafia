@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+
 const Medico = ({ players, setSaveDoc }) => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
 
     const handleSave = () => {
         if (selectedPlayer) {
             setSaveDoc(selectedPlayer.id); // Guarda el ID del jugador que se intenta salvar
-            toast.success(`Has salvado a ${selectedPlayer.name}`); // Mensaje de confirmación
-            setSelectedPlayer(null);
+            toast.success(`Has salvado a ${selectedPlayer.name}`);
+            setSelectedPlayer(null); // Limpia la selección
         }
     };
 

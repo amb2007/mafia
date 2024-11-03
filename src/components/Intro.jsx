@@ -7,7 +7,7 @@ const Intro = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("Iniciando temporizador"); // Comprobar si se activa el temporizador
+        
         const timer = setTimeout(() => {
             setShowOptions(true);
         }, 3000);

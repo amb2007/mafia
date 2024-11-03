@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
-import { useState } from "react";
 import Actions from "./Actions";
+import Night from "./Night"; // Componente opcional para la fase de noche
 import "./Gamplay.css";
 
 const Gameplay = ({ players }) => {
   const [index, setIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [updatedPlayers, setUpdatedPlayers] = useState(players);
+  const [saveAs, setSaveAs] = useState(2); // ID del jugador que el asesino quiere matar
+  const [saveDoc, setSaveDoc] = useState(2); // ID del jugador que el médico quiere salvar
+  const [isNightPhase, setIsNightPhase] = useState(false); // Controla si estamos en la fase de noche
+
+  const updatePlayerStatus = (playerId, newRole) => {
+    setUpdatedPlayers(prevPlayers =>
+      prevPlayers.map(player =>
+        player.id === playerId ? { ...player, role: newRole } : player
+      )
+    );
+  };
 
   const ConfirmAction = () => {
     // Verificamos que players[index] no sea undefined
@@ -28,12 +40,28 @@ const Gameplay = ({ players }) => {
       if (index < players.length - 1) {
         setIndex(index + 1);
       } else {
-        setIndex(0);
+        setIsNightPhase(true); // Cambia a la fase de noche
+        setIndex(0); // Reinicia el índice para la siguiente ronda
       }
     }
   };
 
-  // Si no hay jugadores, mostramos un mensaje
+  // Manejar la lógica de la fase de noche
+  const handleNightPhase = () => {
+    if (isNightPhase) {
+      // Aquí podrías evaluar las acciones del asesino y el médico
+      console.log("Evaluando la fase de noche...");
+      // Resetea los estados de acción
+      setSaveAs(null);
+      setSaveDoc(null);
+      setIsNightPhase(false); // Regresa a la fase de día
+    }
+  };
+
+  useEffect(() => {
+    handleNightPhase(); // Llama a la función para manejar la fase de noche
+  }, [isNightPhase]);
+
   if (players.length === 0) {
     return <div>No hay jugadores disponibles.</div>;
   }
@@ -41,17 +69,31 @@ const Gameplay = ({ players }) => {
   return (
     <div className="gameplay-container">
       <h3>Turno de {players[index].name}</h3>
-      <Cards players={players} index={index} />
+      <Cards players={updatedPlayers} index={index} />
 
       <button onClick={OpenAction}>Acciones</button>
       {showModal && (
-        <Actions
-          role={players[index].role}
-          onConfirm={ConfirmAction}
-          onClose={() => setShowModal(false)}
-          handleClick={handleClick}
-          players={players}
-          currentPlayer={players[index]} // Pasa el jugador actual
+    <Actions
+        role={updatedPlayers[index].role}
+        onConfirm={ConfirmAction}
+        onClose={() => setShowModal(false)}
+        handleClick={handleClick}
+        players={updatedPlayers}
+        currentPlayer={updatedPlayers[index]}
+        updatePlayerStatus={updatePlayerStatus}
+        setSaveAs={setSaveAs} // Asegúrate de que esto esté aquí
+        setSaveDoc={setSaveDoc} // Asegúrate de que esto también esté aquí
+    />
+)}
+
+
+      {/* Opcionalmente mostrar la fase de noche */}
+      {isNightPhase && (
+        <Night 
+          saveAs={saveAs} 
+          saveDoc={saveDoc} 
+          players={updatedPlayers} 
+          onActionComplete={() => console.log("Acciones de la noche completadas")} 
         />
       )}
     </div>

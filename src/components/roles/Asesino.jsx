@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+
 const Asesino = ({ players, setSaveAs }) => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
 
     const handleKill = () => {
         if (selectedPlayer) {
             setSaveAs(selectedPlayer.id); // Guarda el ID del jugador que se intenta asesinar
-            toast.success(`Has asesinado a ${selectedPlayer.name}`); // Mensaje de confirmación
-            setSelectedPlayer(null);
+            console.log(players[setSaveAs])
+            toast.success(`Has asesinado a ${selectedPlayer.name}`);
+            setSelectedPlayer(null); // Limpia la selección
         }
     };
 

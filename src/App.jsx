@@ -10,12 +10,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 function App() {
   const [players, setPlayers] = useState([
+    { id: 0, name: "", role: "" },
     { id: 1, name: "", role: "" },
     { id: 2, name: "", role: "" },
     { id: 3, name: "", role: "" },
     { id: 4, name: "", role: "" },
     { id: 5, name: "", role: "" },
-    { id: 6, name: "", role: "" },
   ]);
 
   return (

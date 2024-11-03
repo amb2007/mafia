@@ -1,11 +1,10 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Asesino from "./roles/Asesino";
 import Medico from "./roles/Medico";
+import Night from "./Night"; // Importamos el componente Night
 
-const Turn = ({ player, players, onActionComplete }) => {
-    const [saveAs, setSaveAs] = useState(null);
-    const [saveDoc, setSaveDoc] = useState(null);
+const Turn = ({ player, players, onActionComplete, saveAs, setSaveAs, saveDoc, setSaveDoc }) => {
+    const [isNight, setIsNight] = useState(false); // Estado para manejar la transición a la noche
 
     const DoAction = () => {
         if (player.role === "asesino") {
@@ -16,30 +15,32 @@ const Turn = ({ player, players, onActionComplete }) => {
         return null;
     };
 
-    useEffect(() => {
-        if (saveAs !== null && saveDoc !== null) {
-            const message = saveAs === saveDoc
-                ? `El jugador ${players[saveDoc].name} ha sido salvado por el médico.`
-                : `El jugador ${players[saveDoc].name} no ha podido ser salvado por el médico y murió.`;
+    const handleNight = () => {
+        setIsNight(true); // Cambiamos a la fase de noche
+    };
 
-            window.alert(message);
+    if (isNight) {
+        return (
+            <Night 
+                saveAs={saveAs} 
+                saveDoc={saveDoc} 
+                players={players} 
+                onActionComplete={() => {
+                    setIsNight(false);
+                    onActionComplete(); // Marca la acción como completa
+                }} 
+            />
+        );
+    }
 
-            if (saveAs !== null) {
-                axios.put(`http://localhost:3000/caracters/${players[saveAs].id}`, {
-                    name: players[saveAs].name,
-                    role: "muerto",
-                })
-                .then(response => console.log(response))
-                .catch(error => console.log(error));
-            }
-
-            onActionComplete(); 
-            setSaveAs(null);
-            setSaveDoc(null);
-        }
-    }, [saveAs, saveDoc, players, onActionComplete]);
-
-    return <>{DoAction()}</>;
+    return (
+        <>
+            {DoAction()}
+            <button onClick={handleNight} >
+                Finalizar Turno
+            </button>
+        </>
+    );
 };
 
 export default Turn;
