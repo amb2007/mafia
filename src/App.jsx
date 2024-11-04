@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Intro />} />
           <Route path="/home" element={<><NavBar /><Home /></>} />
           <Route path="/game" element={<><NavBar /><Game players={players} setPlayers={setPlayers} /></>} />
-          <Route path="/gameplay" element={<><NavBar /><Gameplay players={players}></Gameplay></>} /> {/* Se pasa players */}
+          <Route path="/gameplay" element={<><NavBar /><Gameplay players={players} setPlayers = {setPlayers}></Gameplay></>} /> {/* Se pasa players */}
         </Routes>
       </Router>
       <ToastContainer />

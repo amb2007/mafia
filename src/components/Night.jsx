@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
-const Night = ({ saveAs, saveDoc, players, onActionComplete }) => {
+const Night = ({ saveAs, saveDoc, players, onActionComplete, setPlayers }) => {
+
     useEffect(() => {
         // Solo proceder si saveAs y saveDoc son válidos
         if (saveAs !== null && saveDoc !== null) {
@@ -15,16 +17,24 @@ const Night = ({ saveAs, saveDoc, players, onActionComplete }) => {
                     ? `El jugador ${savedPlayer.name} ha sido salvado por el médico.`
                     : `El jugador ${targetPlayer.name} no ha podido ser salvado por el médico y murió.`;
 
-                window.alert(message);
-
+                toast.info(message);
                 // Actualiza el estado del jugador asesinado
                 if (saveAs !== saveDoc) {
                     axios.put(`http://localhost:3000/caracters/${targetPlayer.id}`, {
+                        id: targetPlayer.id,
                         name: targetPlayer.name,
                         role: "muerto",
                     })
-                    .then(response => console.log(response))
+                    .then(response => {
+                        let aux = players
+                        aux[targetPlayer.id] = response.data;
+                        setPlayers(aux)
+                        console.log(aux)
+                    }
+                        
+                    )
                     .catch(error => console.log(error));
+
                 }
 
                 // Llama a la función para finalizar la acción de la noche

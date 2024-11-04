@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Asesino = ({ players, setSaveAs }) => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
-
+    let filteredPlayer = players.filter((player)=> player.role != "muerto")
+    console.log(filteredPlayer)
     const handleKill = () => {
         if (selectedPlayer) {
             setSaveAs(selectedPlayer.id); // Guarda el ID del jugador que se intenta asesinar
@@ -17,7 +18,7 @@ const Asesino = ({ players, setSaveAs }) => {
         <div>
             <h3>Selecciona a quien quieres asesinar:</h3>
             <ul>
-                {players.map(player => (
+                {filteredPlayer.map(player => (
                     <li key={player.id}>
                         <button onClick={() => setSelectedPlayer(player)}>
                             {player.name}

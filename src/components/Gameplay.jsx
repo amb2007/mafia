@@ -4,7 +4,7 @@ import Actions from "./Actions";
 import Night from "./Night"; // Componente opcional para la fase de noche
 import "./Gamplay.css";
 
-const Gameplay = ({ players }) => {
+const Gameplay = ({ players, setPlayers }) => {
   const [index, setIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [updatedPlayers, setUpdatedPlayers] = useState(players);
@@ -92,7 +92,8 @@ const Gameplay = ({ players }) => {
         <Night 
           saveAs={saveAs} 
           saveDoc={saveDoc} 
-          players={updatedPlayers} 
+          players={updatedPlayers}
+          setPlayers={setPlayers}
           onActionComplete={() => console.log("Acciones de la noche completadas")} 
         />
       )}
