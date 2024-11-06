@@ -1,6 +1,6 @@
 import Turn from "./Turn";
-
-const Actions = ({ role, onConfirm, onClose, handleClick, players, currentPlayer, setSaveAs, setSaveDoc }) => {
+import Policia from "./roles/Policia";
+const Actions = ({ role, onConfirm, onClose, handleClick, players, currentPlayer, setSaveAs, setSaveDoc, setSavePol }) => {
 
     const getRoleAction = () => {
       switch (role) {
@@ -38,9 +38,14 @@ const Actions = ({ role, onConfirm, onClose, handleClick, players, currentPlayer
           return {
             title: "Policía - Acción: Arrestar",
             description:"Eres un policía, arresta a quien creas que es el asesino.",
-            action: () => {
-     console.log("SDASDASDSADDSA")
-            },
+            action: () => (
+              <Policia
+              player={currentPlayer}
+    players={players}
+    onActionComplete={handleClick}
+              setSavePol={setSavePol}
+              />
+            ),
         };
       case "verdulero":
         return {

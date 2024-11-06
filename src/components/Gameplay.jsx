@@ -8,8 +8,9 @@ const Gameplay = ({ players, setPlayers }) => {
   const [index, setIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [updatedPlayers, setUpdatedPlayers] = useState(players);
-  const [saveAs, setSaveAs] = useState(2); // ID del jugador que el asesino quiere matar
-  const [saveDoc, setSaveDoc] = useState(2); // ID del jugador que el médico quiere salvar
+  const [saveAs, setSaveAs] = useState(null); // ID del jugador que el asesino quiere matar
+  const [saveDoc, setSaveDoc] = useState(null);
+  const [savePol, setSavePol] = useState(null); // ID del jugador que el médico quiere salvar
   const [isNightPhase, setIsNightPhase] = useState(false); // Controla si estamos en la fase de noche
 
   const updatePlayerStatus = (playerId, newRole) => {
@@ -54,6 +55,7 @@ const Gameplay = ({ players, setPlayers }) => {
       // Resetea los estados de acción
       setSaveAs(null);
       setSaveDoc(null);
+      setSavePol(null);
       setIsNightPhase(false); // Regresa a la fase de día
     }
   };
@@ -82,7 +84,9 @@ const Gameplay = ({ players, setPlayers }) => {
         currentPlayer={updatedPlayers[index]}
         updatePlayerStatus={updatePlayerStatus}
         setSaveAs={setSaveAs} // Asegúrate de que esto esté aquí
-        setSaveDoc={setSaveDoc} // Asegúrate de que esto también esté aquí
+        setSaveDoc={setSaveDoc}
+        savePol={savePol}
+        setSavePol={setSavePol} // Asegúrate de que esto también esté aquí
     />
 )}
 
@@ -91,7 +95,8 @@ const Gameplay = ({ players, setPlayers }) => {
       {isNightPhase && (
         <Night 
           saveAs={saveAs} 
-          saveDoc={saveDoc} 
+          saveDoc={saveDoc}
+          savePol={savePol} 
           players={updatedPlayers}
           setPlayers={setPlayers}
           onActionComplete={() => console.log("Acciones de la noche completadas")} 
