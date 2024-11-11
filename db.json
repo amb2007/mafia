@@ -2,33 +2,33 @@
   "caracters": [
     {
       "id": "0",
-      "name": "dsadsa",
-      "role": "asesino"
+      "name": "asdasd",
+      "role": "panadero"
     },
     {
       "id": "1",
-      "name": "saddas",
+      "name": "adasd",
       "role": "verdulero"
     },
     {
       "id": "2",
-      "name": "adsa",
-      "role": "medico"
+      "name": "asdasd",
+      "role": "asesino"
     },
     {
       "id": "3",
-      "name": "adsdas",
-      "role": "carnicero"
-    },
-    {
-      "id": "4",
-      "name": "dasdas",
+      "name": "dasasd",
       "role": "policia"
     },
     {
+      "id": "4",
+      "name": "dasasd",
+      "role": "carnicero"
+    },
+    {
       "id": "5",
-      "name": "dsawq",
-      "role": "panadero"
+      "name": "dasasd",
+      "role": "medico"
     }
   ]
 }

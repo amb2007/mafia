@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Actions from "./Actions";
 import Night from "./Night"; // Componente opcional para la fase de noche
-import "./Gamplay.css";
+import "./css/Gamplay.css";
 
 const Gameplay = ({ players, setPlayers }) => {
   const [index, setIndex] = useState(0);
@@ -46,6 +46,7 @@ const Gameplay = ({ players, setPlayers }) => {
       }
     }
   };
+  
 
   // Manejar la lógica de la fase de noche
   const handleNightPhase = () => {

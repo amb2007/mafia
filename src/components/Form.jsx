@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import "./NavBar.css";
+import "./css/NavBar.css";
 
 function Form({ players, setPlayers, handlePlayers }) {
   const handleChange = (event, id) => {

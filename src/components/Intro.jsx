@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './Intro.css';
+import './css/Intro.css';
 
 const Intro = () => {
     const [showOptions, setShowOptions] = useState(false);

@@ -1,0 +1,125 @@
+/* Contenedor para las reglas */
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ajuste de altura mínima */
+    background-color: #1a1a1a; /* Fondo oscuro */
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Estilo sombrío y responsivo para el título */
+/* Estilo sombrío y responsivo para el título */
+.mafia-title1 {
+    font-family: 'Butcherman', cursive;
+/* Tamaño inicial del título */
+    color: #ff0000;
+    text-shadow: 0 0 10px #000, 0 0 20px #a50505b6, 0 0 30px #af0606b9, 0 0 40px #ff0000;
+    margin-bottom: 2rem;
+    animation: fade-in 3s ease-in-out forwards;
+}
+
+@media (max-width: 1024px) {
+    .mafia-title {
+        font-size: 3rem; /* Tamaño más pequeño para pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .mafia-title {
+        font-size: 2.5rem; /* Tamaño para tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .mafia-title {
+        font-size: 2rem; /* Tamaño reducido para pantallas pequeñas */
+    }
+}
+
+
+/* Estilo responsivo para el texto de reglas */
+.rule-text, .call-to-action {
+    color: #ff0000;
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    text-shadow: 0 0 5px #000, 0 0 10px #a50505b6;
+}
+
+@media (max-width: 768px) {
+    .rule-text, .call-to-action {
+        font-size: 1.1rem; /* Ajuste en tamaño de texto */
+    }
+}
+
+@media (max-width: 480px) {
+    .rule-text, .call-to-action {
+        font-size: 1rem;
+    }
+}
+
+/* Lista de reglas */
+.rule-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.rule-list li {
+    color: #ff0000;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    text-shadow: 0 0 5px #000, 0 0 10px #a50505b6;
+}
+
+@media (max-width: 768px) {
+    .rule-list li {
+        font-size: 1rem;
+    }
+}
+
+/* Agregar reglas de victoria */
+.rule-list .victory-rule {
+    color: #ffdd00;
+    font-weight: bold;
+    text-shadow: 0 0 10px #333, 0 0 20px #ffdd00;
+}
+
+/* Botón de juego */
+.play-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button:hover {
+    background-color: #b60606;
+    color: black;
+}
+
+@media (max-width: 480px) {
+    .play-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animación del título */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,75 @@
+/* Contenedor general para los finales */
+.ending-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    background-color: black;
+    text-align: center;
+}
+
+/* Título de final */
+.ending-title {
+    font-family: 'Butcherman', cursive;
+    font-size: 5vw; /* Escala de acuerdo al ancho de la pantalla */
+    color: #00d8ff; /* Celeste para el final bueno */
+    text-shadow: 0 0 10px #0c4a55, 0 0 20px #00c8ff, 0 0 30px #00b8ff;
+    animation: title-zoom-in 3s ease-in-out forwards;
+}
+
+.bad-ending .ending-title {
+    color: #ff0000; /* Rojo para el final malo */
+    text-shadow: 0 0 10px #420909, 0 0 20px #e50000, 0 0 30px #cc0000;
+}
+
+/* Animación de zoom para el título */
+@keyframes title-zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Estilo de los botones */
+.ending-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5vw; /* Tamaño adaptable al ancho de pantalla */
+    background-color: transparent;
+    border: 2px solid #00d8ff;
+    color: #00d8ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bad-ending .ending-button {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.ending-button:hover {
+    background-color: #007a99;
+    color: black;
+}
+
+.bad-ending .ending-button:hover {
+    background-color: #b60606;
+    color: black;
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .ending-title {
+        font-size: 8vw; /* Aumenta el tamaño del texto en pantallas pequeñas */
+    }
+    .ending-button {
+        font-size: 4vw;
+        padding: 0.8rem 1.5rem;
+    }
+}

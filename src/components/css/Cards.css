@@ -1,0 +1,51 @@
+/* Estilos generales de las cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    color: #fff; /* Texto blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    width: 250px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Efecto al pasar el mouse */
+  .card:hover {
+    transform: translateY(-10px); /* Eleva la card al pasar el mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7); /* Aumenta la sombra */
+  }
+  
+  /* Título dentro de la card */
+  .card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #ff0000; /* Color rojo mafia */
+  }
+  
+  /* Imagen del rol */
+  .card img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ff0000; /* Bordes rojos alrededor de la imagen */
+  }
+  
+  /* Texto del rol */
+  .card p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #ccc; /* Gris claro para el texto */
+    text-shadow: 0 0 5px #000; /* Sombra sutil */
+  }
+  

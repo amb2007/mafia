@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './css/Cards.css'
 const Cards = ({players, index}) => {
     return(
         <>

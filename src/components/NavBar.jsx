@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import './NavBar.css'
+import './css/Navbar.css'
 const NavBar = () => {
   const navigate =  useNavigate();
 

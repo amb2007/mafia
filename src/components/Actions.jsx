@@ -1,51 +1,49 @@
 import Turn from "./Turn";
 import Policia from "./roles/Policia";
-const Actions = ({ role, onConfirm, onClose, handleClick, players, currentPlayer, setSaveAs, setSaveDoc, setSavePol }) => {
-
-    const getRoleAction = () => {
-      switch (role) {
-        case "asesino":
-          return {
-            title: "Asesino - Acción: Matar",
-            description: "Eres un asesino, así que asesina a alguien.",
-            action: () => (
-              <Turn
-    player={currentPlayer}
-    players={players}
-    onActionComplete={handleClick}
-    setSaveAs={setSaveAs} // Asegúrate de que se pase aquí
-    setSaveDoc={setSaveDoc} // Asegúrate de que se pase aquí
-/>
-
-            ),
-          };
-        case "medico":
-          return {
-            title: "Médico - Acción: Proteger",
-            description: "Eres un médico, protege a quien creas conveniente.",
-            action: () => (
-              <Turn
+const Actions = ({role, onConfirm, onClose, handleClick, players, currentPlayer, setSaveAs, setSaveDoc, setSavePol,}) => {
+  const getRoleAction = () => {
+    switch (role) {
+      case "asesino":
+        return {
+          title: "Asesino - Acción: Matar",
+          description: "Eres un asesino, así que asesina a alguien.",
+          action: () => (
+            <Turn
               player={currentPlayer}
               players={players}
               onActionComplete={handleClick}
-              setSaveAs={setSaveAs} // Asegúrate de que se pase aquí
-              setSaveDoc={setSaveDoc} // Asegúrate de que se pase aquí
-          />
-          
-            ),
-          };
-        case "policia":
-          return {
-            title: "Policía - Acción: Arrestar",
-            description:"Eres un policía, arresta a quien creas que es el asesino.",
-            action: () => (
-              <Policia
+              setSaveAs={setSaveAs}
+              setSaveDoc={setSaveDoc}
+            />
+          ),
+        };
+      case "medico":
+        return {
+          title: "Médico - Acción: Proteger",
+          description: "Eres un médico, protege a quien creas conveniente.",
+          action: () => (
+            <Turn
               player={currentPlayer}
-    players={players}
-    onActionComplete={handleClick}
+              players={players}
+              onActionComplete={handleClick}
+              setSaveAs={setSaveAs}
+              setSaveDoc={setSaveDoc}
+            />
+          ),
+        };
+      case "policia":
+        return {
+          title: "Policía - Acción: Arrestar",
+          description:
+            "Eres un policía, arresta a quien creas que es el asesino.",
+          action: () => (
+            <Policia
+              player={currentPlayer}
+              players={players}
+              onActionComplete={handleClick}
               setSavePol={setSavePol}
-              />
-            ),
+            />
+          ),
         };
       case "verdulero":
         return {
@@ -75,6 +73,12 @@ const Actions = ({ role, onConfirm, onClose, handleClick, players, currentPlayer
         return {
           title: "Jugador Muerto",
           description: "No puedes realizar acciones porque estás muerto.",
+          action: () => null,
+        };
+      case "arrestado":
+        return {
+          title: "Jugador Arrestado",
+          description: "No puedes realizar acciones porque estás arrestado.",
           action: () => null,
         };
       default:
